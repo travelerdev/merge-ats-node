@@ -1,6 +1,6 @@
 {
   "name": "@travelerdev/merge-ats-node",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "license": "MIT",
   "type": "module",
   "platform": "node",
@@ -14,6 +14,9 @@
     "./*": "./dist/*/index.js"
   },
   "scripts": {
+    "pregenerate": "rm -rf ./src/generated",
+    "generate": "npx openapi-typescript-codegen --input ./openapi-spec.json --output ./src/generated --useOptions --client axios --name UnderlyingMergeATS",
+    "postgenerate": "eslint src/generated --fix",
     "dev": "tsmodule dev",
     "build": "tsmodule build",
     "test": "ava",
@@ -27,7 +30,13 @@
     "@typescript-eslint/eslint-plugin": "^5.43.0",
     "@typescript-eslint/parser": "^5.43.0",
     "ava": "^5.1.0",
+    "axios": "^1.1.0",
     "eslint": "^8.27.0",
+    "form-data": "^4.0.0",
     "typescript": "^4.9.3"
+  },
+  "peerDependencies": {
+    "axios": ">1.0.0",
+    "form-data": ">=4.0.0 <5.0.0"
   }
 }

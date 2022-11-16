@@ -1,4 +1,3 @@
-export const helloWorld = () => {
-  // eslint-disable-next-line no-console
-  console.log("Hello World!");
-};
+export { MergeServers } from "./MergeServers";
+export * from "./generated";
+export { MergeATS } from "./MergeATS";
