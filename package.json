@@ -1,0 +1,33 @@
+{
+  "name": "@travelerdev/merge-ats-node",
+  "version": "0.0.1",
+  "license": "MIT",
+  "type": "module",
+  "platform": "node",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    "./package.json": "./package.json",
+    ".": "./dist/index.js",
+    "./*": "./dist/*/index.js"
+  },
+  "scripts": {
+    "dev": "tsmodule dev",
+    "build": "tsmodule build",
+    "test": "ava",
+    "pretest": "tsmodule build",
+    "prepublishOnly": "yarn test",
+    "lint": "eslint src --fix"
+  },
+  "devDependencies": {
+    "@tsmodule/tsmodule": "^40.10.0",
+    "@types/node": "^18.11.9",
+    "@typescript-eslint/eslint-plugin": "^5.43.0",
+    "@typescript-eslint/parser": "^5.43.0",
+    "ava": "^5.1.0",
+    "eslint": "^8.27.0",
+    "typescript": "^4.9.3"
+  }
+}
