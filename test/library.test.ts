@@ -1,27 +1,22 @@
-import { MergeATS, MergeServers } from "../dist";
-import test from "ava";
+import { MergeATS, MergeServers } from "../src";
 
-test("generate library exists", (t) => {
-  if (!!MergeATS) {
-    t.pass();
-  }
-});
+describe("MergeATS", () => {
+  it("generate library exists", () => {
+    expect(MergeATS).toBeDefined();
+  });
 
-test("generate library exposes the two servers", (t) => {
-  if (MergeServers.production && MergeServers.sandbox) {
-    t.pass();
-  }
-});
+  it("generate library exposes the two servers", () => {
+    expect(MergeServers.production).toBeDefined();
+    expect(MergeServers.sandbox).toBeDefined();
+  });
 
-test("generate library can be instantiated", (t) => {
-  if(!!(new MergeATS({ apiKey: "asdf" }))) {
-    t.pass();
-  }
-});
+  it("generate library can be instantiated", () => {
+    expect(new MergeATS({ apiKey: "asdf" })).toBeDefined();
+  });
 
-test("generate library has services", (t) => {
-  const apiCall = new MergeATS({ apiKey: "asdf" }).accountDetails?.accountDetailsRetrieve;
-  if (apiCall && typeof apiCall === "function") {
-    t.pass();
-  }
+  it("generate library has services", () => {
+    const apiCall = new MergeATS({ apiKey: "asdf" }).accountDetails?.accountDetailsRetrieve;
+    expect(apiCall).toBeDefined();
+    expect(typeof apiCall).toBe("function");
+  });
 });

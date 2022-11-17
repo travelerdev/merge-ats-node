@@ -10,5 +10,6 @@ service-account.json
 test
 .eslintrc
 .gitignore
-.prettierrc.json.ava.config.mjs
+.prettierrc.json
 yarn.lock
+jest.config.js
